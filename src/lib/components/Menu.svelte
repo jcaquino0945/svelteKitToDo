@@ -4,6 +4,7 @@
 	import { fade } from 'svelte/transition';
 
     export let name;
+    
     let currentDate = new Date();
     let notifPrompt = false;
 

@@ -33,8 +33,8 @@ class TaskService {
             title: t.title,
             description: t.description
         }
-        this.tasks.push(newTask)
-        this.tasks = this.tasks
+        this.tasks.push(newTask);
+        this.tasks = this.tasks;
         
         return t;
         /*
@@ -45,12 +45,12 @@ class TaskService {
     addComment(t:Task,comment:string): Task {
         t.id = t.id;
         t.status = t.status;
-        t.comments.push(comment)
+        t.comments.push(comment);
         t.title = t.title
         t.description = t.description
-        this.tasks.splice(this.tasks.indexOf(t),1)
-        this.tasks.push(t)
-        this.tasks = this.tasks
+        this.tasks.splice(this.tasks.indexOf(t),1);
+        this.tasks.push(t);
+        this.tasks = this.tasks;
 
         return t;
     }
@@ -63,14 +63,12 @@ class TaskService {
         t.id = t.id;
         t.status = 'Completed';
         t.comments = t.comments;
-        t.title = t.title
-        t.description = t.description
-        console.log(t)
-        this.tasks.splice(this.tasks.indexOf(t),1)
-        this.tasks.push(t)
-        this.tasks = this.tasks
+        t.title = t.title;
+        t.description = t.description;
+        this.tasks.splice(this.tasks.indexOf(t),1);
+        this.tasks.push(t);
+        this.tasks = this.tasks;
 
-        console.log(this.tasks)
         return t;
     }
 
@@ -78,24 +76,21 @@ class TaskService {
         t.id = t.id;
         t.status = 'Pending';
         t.comments = t.comments;
-        t.title = t.title
-        t.description = t.description
-        console.log(t)
-        this.tasks.splice(this.tasks.indexOf(t),1)
-        this.tasks.push(t)
-        this.tasks = this.tasks
+        t.title = t.title;
+        t.description = t.description;
+        this.tasks.splice(this.tasks.indexOf(t),1);
+        this.tasks.push(t);
+        this.tasks = this.tasks;
 
-        console.log(this.tasks)
         return t;
     }
 
     deleteTask(t:Task) : Task {
-        this.tasks.splice(this.tasks.indexOf(t), 1)
-        this.tasks = this.tasks
+        this.tasks.splice(this.tasks.indexOf(t), 1);
+        this.tasks = this.tasks;
 
         return t;
     }
-    
 }
 
 export const taskService = new TaskService();

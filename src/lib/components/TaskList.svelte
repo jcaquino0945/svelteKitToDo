@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { writable } from 'svelte/store';
     import { onMount } from 'svelte';
     import { taskService } from '../services/taskService';
     import Task from './Task.svelte'
@@ -9,11 +8,11 @@
 
     onMount(async () => {
 		myTasks = taskService.getAll();
-        taskSort()
+        taskSort();
     })
 
     function taskSort() {
-        myTasks.sort((a,b) => (a.status > b.status) ? 1 : ((b.status > a.status) ? -1 : 0))
+        myTasks.sort((a,b) => (a.status > b.status) ? 1 : ((b.status > a.status) ? -1 : 0));
     }
 
     function refresh(event) {

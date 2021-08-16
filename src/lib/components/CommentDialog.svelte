@@ -11,7 +11,6 @@
     let comment:string;
     let open = false;
 
-
     function openModal() {
         open = true;
     }
@@ -32,7 +31,6 @@
 			text: 'Added Comment In Task!'
 		});
 	}
-
 </script>
 
 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor" on:click={() => openModal()}>

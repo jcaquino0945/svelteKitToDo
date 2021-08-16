@@ -11,7 +11,6 @@ class ToastService
     subscribe(callback: (message: string) => void) {
         this.callbacks.push(callback)
     }
-    
 }
 
 export const toastService = new ToastService();
