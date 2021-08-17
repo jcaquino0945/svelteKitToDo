@@ -11,8 +11,9 @@ class TaskService {
                 description: 'Remember to feed phairo and phaira!', 
                 status: 'Pending', 
                 comments: [
-                    'very nice',
-                    'wow so good'
+                    'Dont forget the pork mix',
+                    'Do this by 7 am',
+                    'Max is allergic to pork'
                 ]
             },
             { 

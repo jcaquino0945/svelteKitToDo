@@ -3,7 +3,7 @@
     import type { Task } from '../models/task';
     import { createEventDispatcher } from 'svelte';
     import  CommentDialog from './CommentDialog.svelte';
-
+    import TaskView from './TaskView.svelte';
     export let task;
 
     const dispatch = createEventDispatcher();
@@ -47,13 +47,33 @@
           {/if}
     </div>
     <div class="task-container-mid">
-        {#if task.status == 'Pending'}<!-- unchecked -->
-        <h3 class="text-base">{task.title}</h3>
-        <p class="text-sm">{task.description}</p>
-        {:else if task.status == 'Completed'}<!-- checked -->
-        <h3 class="text-base line-through">{task.title}</h3>
-        <p class="text-sm line-through">{task.description}</p>
-        {/if}
+        <div class="description">
+            {#if task.status == 'Pending'}<!-- unchecked -->
+            <h3 class="description-title">{task.title}</h3>
+            <p class="description-info">{task.description}</p>
+            {:else if task.status == 'Completed'}<!-- checked -->
+            <h3 class="description-title-checked">{task.title}</h3>
+            <p class="description-info-checked">{task.description}</p>
+            {/if}
+        </div>
+        <div class="comment">
+            {#if task.comments.length != 0}<!-- unchecked -->
+                {#if task.comments.length == 1}
+                <p><span class="comment-author">Miguel Aquino </span>{task.comments[0]}</p>
+                {/if}
+                {#if task.comments.length == 2}
+                    {#each {length: 2} as _, i}
+                    <p><span class="comment-author">Miguel Aquino </span>{task.comments[i]}</p>
+                    {/each}
+                {/if}
+                {#if task.comments.length > 2}
+                    {#each {length: 2} as _, i}
+                    <p><span class="comment-author">Miguel Aquino </span>{task.comments[i]}</p>
+                    {/each}
+                    <TaskView task={task}></TaskView>
+                {/if}
+            {/if}
+        </div>
     </div>
     <div class="task-container-right">
         {#if task.comments.length == 0}
@@ -69,36 +89,58 @@
         </svg>
     </div>
 </div>
-<div class="comments">
-    {#each task.comments as comments}
+<!--
+<div class="comment-container">
+    <div class="comment-container-mid">
+        {#each task.comments as comments}
         <p><span class="comment-author">Miguel Aquino </span>{comments}</p>
-    {/each}
+        {/each}
+    </div>
 </div>
+-->
 </div>
 
 <style lang="postcss">
 .task {
     @apply shadow mb-1;
 }
-.comments {
-     @apply px-12 py-2;
-}
-.comment-author {
-    @apply font-bold pr-4;
-}
-.comments p {
-    display: block;
-    font-family: 'Abel', sans-serif;
-}
 .task-container {
     @apply flex justify-center items-center py-2 ;
 }
+
 .task-container-left {
     @apply w-1/6 flex justify-center items-center pl-7;
 }
 .task-container-mid {
-    @apply w-4/6;
+    @apply w-4/6 flex justify-start items-start flex-col;
 }
+.description {
+    @apply h-2/3;
+}
+.description-title {
+    @apply text-xl font-medium;
+    font-family: 'Antonio', sans-serif;
+}
+.description-title-checked {
+    @apply text-xl font-medium line-through;
+    font-family: 'Antonio', sans-serif;
+}
+.description-info {
+    @apply text-sm mt-1;
+    font-family: 'Abel', sans-serif;
+}
+.description-info-checked {
+    @apply text-sm line-through mt-1;
+    font-family: 'Abel', sans-serif;
+}
+.comment {
+     @apply mt-2 h-1/3 text-sm;
+}
+.comment-author {
+    @apply font-bold pr-4;
+    font-family: 'Abel', sans-serif;
+}
+
 .task-container-right {
     @apply w-1/6 flex justify-center items-center pr-7;
 }

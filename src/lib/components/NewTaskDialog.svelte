@@ -8,12 +8,8 @@
     let newTask = new Task();
     let open = false;
 
-    function openModal() {
-        open = true;
-    }
-
-    function closeModal() {
-        open = false;
+    function triggerModal() {
+        open = !open;
     }
 
     function addTask() {
@@ -23,7 +19,7 @@
         newTask.title = '';
         newTask.description = '';
         //close modal after clear
-        closeModal();
+        triggerModal();
     }
 
     function sayHello() { //change naming convetion (ex. onTaskAdded)
@@ -35,7 +31,7 @@
 </script>
 
 <div class="addIcon">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" on:click={() => openModal()}>
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" on:click={() => triggerModal()}>
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
 </div>
@@ -89,7 +85,7 @@
           <button type="button" class="addBtn" disabled='{newTask.title == '' && newTask.description == ''}' on:click={() => addTask()}>
             Add New Task
           </button>
-          <button type="button" class="cancelBtn" on:click={() => closeModal()}>
+          <button type="button" class="cancelBtn" on:click={() => triggerModal()}>
             Cancel
           </button>
         </div>

@@ -11,19 +11,16 @@
     let comment:string;
     let open = false;
 
-    function openModal() {
-        open = true;
-    }
-
-    function closeModal() {
-        open = false;
+    function triggerModal() {
+        open = !open;
     }
 
     function addComment() {
         taskService.addComment(taskInfo, comment);
         dispatchComment();
         toastService.publish('User has uploaded a new comment');
-        closeModal();
+        triggerModal();
+        comment = '';
     }
 
     function dispatchComment() {
@@ -33,7 +30,7 @@
 	}
 </script>
 
-<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor" on:click={() => openModal()}>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor" on:click={() => triggerModal()}>
     <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
 </svg>
 
@@ -78,7 +75,7 @@
           <button type="button" class="addBtn" on:click={() => addComment()}>
             Add Comment
           </button>
-          <button type="button" class="cancelBtn" on:click={() => closeModal()}>
+          <button type="button" class="cancelBtn" on:click={() => triggerModal()}>
             Cancel
           </button>
         </div>
