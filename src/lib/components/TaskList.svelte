@@ -3,6 +3,7 @@
     import { taskService } from '../services/taskService';
     import Task from './Task.svelte'
     import NewTaskDialog from './NewTaskDialog.svelte'
+    import {dndzone} from "svelte-dnd-action";
 
     let myTasks = [];
 
