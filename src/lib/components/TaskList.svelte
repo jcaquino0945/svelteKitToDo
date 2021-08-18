@@ -15,6 +15,7 @@
     })
 
     const flipDurationMs = 300;
+    const dropFromOthersDisabled = true;
     function handleDndConsider(e) {
         items = e.detail.items;
         taskSort();
@@ -22,6 +23,7 @@
     function handleDndFinalize(e) {
         items = e.detail.items;
         console.log(e.detail.items)
+        console.log(items)
         taskSort();
     }
 
@@ -37,7 +39,7 @@
 
 </script>
 
-<div class="task-section" use:dndzone="{{items, flipDurationMs}}" on:consider="{handleDndConsider}" on:finalize="{handleDndFinalize}">
+<div class="task-section" use:dndzone="{{items, flipDurationMs,dropFromOthersDisabled}}" on:consider="{handleDndConsider}" on:finalize="{handleDndFinalize}">
     {#each items as item(item.id)}
         <Task task={item} on:message={refresh} ></Task>
     {/each}
@@ -48,5 +50,4 @@
 .task-section {
     @apply h-auto w-full;
 }
-
 </style>

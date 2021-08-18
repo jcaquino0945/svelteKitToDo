@@ -70,9 +70,7 @@
                     {#each {length: 2} as _, i}
                     <p><span class="comment-author">Miguel Aquino </span>{task.comments[i]}</p>
                     {/each}
-                    <div class="see-more">
                     <TaskView task={task}></TaskView>
-                    </div>
                 {/if}
             {/if}
         </div>
@@ -157,8 +155,5 @@
 }
 .task-section>div:nth-child(even){
     background-color:rgb(243, 243, 243);
-}
-.see-more {
-    @apply cursor-pointer;
 }
 </style>

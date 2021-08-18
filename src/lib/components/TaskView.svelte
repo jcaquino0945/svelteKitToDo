@@ -49,7 +49,7 @@
 
 <style lang="postcss">
 .see-more {
-    @apply text-sm text-gray-500 mt-1;
+    @apply text-sm text-gray-500 mt-1 cursor-pointer;
     font-family: 'Abel', sans-serif;
 }
 .modal-container {
