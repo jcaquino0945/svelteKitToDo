@@ -70,7 +70,9 @@
                     {#each {length: 2} as _, i}
                     <p><span class="comment-author">Miguel Aquino </span>{task.comments[i]}</p>
                     {/each}
+                    <div class="see-more">
                     <TaskView task={task}></TaskView>
+                    </div>
                 {/if}
             {/if}
         </div>
@@ -107,7 +109,9 @@
 .task-container {
     @apply flex justify-center items-center py-2 ;
 }
-
+.task-container-left svg{
+    @apply cursor-pointer;
+}
 .task-container-left {
     @apply w-1/6 flex justify-center items-center pl-7;
 }
@@ -153,5 +157,8 @@
 }
 .task-section>div:nth-child(even){
     background-color:rgb(243, 243, 243);
+}
+.see-more {
+    @apply cursor-pointer;
 }
 </style>
